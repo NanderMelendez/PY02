@@ -10,7 +10,15 @@ public:
     {
         Cantidad=Ammount;
     }
-    virtual int getCantidad()
+    virtual int getCantidad1()
+    {
+        return Cantidad; 
+    }
+    virtual int getCantidad2()
+    {
+        return Cantidad; 
+    }
+    virtual int getCantidad3()
     {
         return Cantidad; 
     }
@@ -18,7 +26,15 @@ public:
     {
         Precio=Price;
     }
-    virtual double getPrecio()
+    virtual double getPrecio1()
+    {
+        return Precio;
+    }
+    virtual double getPrecio2()
+    {
+        return Precio;
+    }
+    virtual double getPrecio3()
     {
         return Precio;
     }
@@ -26,7 +42,15 @@ public:
     {
         Kilos=Weight;
     }
-    virtual double getKilos()
+    virtual double getKilos1()
+    {
+        return Kilos;
+    }
+    virtual double getKilos2()
+    {
+        return Kilos;
+    }
+    virtual double getKilos3()
     {
         return Kilos;
     }
@@ -43,37 +67,63 @@ Ropa::Ropa(int Ammount,double Price):Cantidad(Ammount),Precio(Price)
 class Jersey:public Ropa
 {
 public:
-    Jersey(int =0,double =0,double =0);
-    void setCantidad(int Ammount)
+    Jersey(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
+    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
     {
-        Cant_Jersey=Ammount;
+        Cant_Jersey1=Ammount1;
+        Cant_Jersey2=Ammount2;
+        Cant_Jersey3=Ammount3;
     }
-    int getCantidad()
+    int getCantidad1()
     {
-        return Cant_Jersey;
+        return Cant_Jersey1;
     }
-    void setPrecio(double Price)
+    int getCantidad2()
     {
-        Precio_Jersey=Price;
+        return Cant_Jersey2;
     }
-    double getPrecio()
+    void setPrecio(double Price1,double Price2,double Price3)
     {
-        return Precio_Jersey;
+        Precio_Jersey1=Price1;
+        Precio_Jersey2=Price2;
+        Precio_Jersey3=Price3;
     }
-    void setKilos(double Weight)
+    double getPrecio1()
     {
-        Kilos_Jersey=Weight;
+        return Precio_Jersey1;
     }
-    double getKilos()
+    double getPrecio2()
     {
-        return Kilos_Jersey;
+        return Precio_Jersey2;
+    }
+    double getPrecio3()
+    {
+        return Precio_Jersey3;
+    }
+    void setKilos(double Weight1,double Weight2,double Weight3)
+    {
+        Kilos_Jersey1=Weight1;
+        Kilos_Jersey2=Weight2;
+        Kilos_Jersey3=Weight3;
+    }
+    double getKilos1()
+    {
+        return Kilos_Jersey1;
+    }
+    double getKilos2()
+    {
+        return Kilos_Jersey2;
+    }
+    double getKilos3()
+    {
+        return Kilos_Jersey3;
     }
 private:
-  int Cant_Jersey;
-  double Precio_Jersey,Kilos_Jersey;
+  int Cant_Jersey1,Cant_Jersey2,Cant_Jersey3;
+  double Precio_Jersey1,Precio_Jersey2,Precio_Jersey3,Kilos_Jersey1,Kilos_Jersey2,Kilos_Jersey3;
 };
 
-Jersey::Jersey(int Ammount,double Price,double Weight):Cant_Jersey(Ammount),Precio_Jersey(Price),Kilos_Jersey(Weight)
+Jersey::Jersey(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Jersey1(Ammount1),Cant_Jersey2(Ammount2),Cant_Jersey3(Ammount3),Precio_Jersey1(Price1),Precio_Jersey2(Price2),Precio_Jersey3(Price3),Kilos_Jersey3(Weight3)
 {
 
 }
@@ -81,37 +131,67 @@ Jersey::Jersey(int Ammount,double Price,double Weight):Cant_Jersey(Ammount),Prec
 class Pique:public Ropa
 {
 public:
-    Pique(int =0,double =0,double =0);
-    void setCantidad(int Ammount)
+    Pique(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
+    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
     {
-        Cant_Pique=Ammount;
+        Cant_Pique1=Ammount1;
+        Cant_Pique2=Ammount2;
+        Cant_Pique3=Ammount3;
     }
-    int getCantidad()
+    int getCantidad1()
     {
-        return Cant_Pique;
+        return Cant_Pique1;
     }
-    void setPrecio(double Price)
+    int getCantidad2()
     {
-        Precio_Pique=Price;
+        return Cant_Pique2;
     }
-    double getPrecio()
+    int getCantidad3()
     {
-        return Precio_Pique;
+        return Cant_Pique3;
     }
-    void setKilos(double Weight)
+    void setPrecio(double Price1,double Price2,double Price3)
     {
-        Kilos_Pique=Weight;
+        Precio_Pique1=Price1;
+        Precio_Pique2=Price2;
+        Precio_Pique3=Price3;
     }
-    double getKilos()
+    double getPrecio1()
     {
-        return Kilos_Pique;
+        return Precio_Pique1;
+    }
+    double getPrecio2()
+    {
+        return Precio_Pique2;
+    }
+    double getPrecio3()
+    {
+        return Precio_Pique3;
+    }
+    void setKilos(double Weight1,double Weight2,double Weight3)
+    {
+        Kilos_Pique1=Weight1;
+        Kilos_Pique2=Weight2;
+        Kilos_Pique3=Weight3;
+    }
+    double getKilos1()
+    {
+        return Kilos_Pique1;
+    }
+    double getKilos2()
+    {
+        return Kilos_Pique2;
+    }
+    double getKilos3()
+    {
+        return Kilos_Pique3;
     }
 private:
-  int Cant_Pique;
-  double Precio_Pique,Kilos_Pique;
+  int Cant_Pique1,Cant_Pique2,Cant_Pique3;
+  double Precio_Pique1,Precio_Pique2,Precio_Pique3,Kilos_Pique1,Kilos_Pique2,Kilos_Pique3;
 };
 
-Pique::Pique(int Ammount,double Price,double Weight):Cant_Pique(Ammount),Precio_Pique(Price),Kilos_Pique(Weight)
+Pique::Pique(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Pique1(Ammount1),Cant_Pique2(Ammount2),Cant_Pique3(Ammount3),Precio_Pique1(Price1),Precio_Pique2(Price2),Precio_Pique3(Price3),Kilos_Pique1(Weight1),Kilos_Pique2(Weight2),Kilos_Pique3(Weight3)
 {
 
 }
@@ -119,37 +199,67 @@ Pique::Pique(int Ammount,double Price,double Weight):Cant_Pique(Ammount),Precio_
 class Franela:public Ropa
 {
 public:
-    Franela(int =0,double =0,double =0);
-    void setCantidad(int Ammount)
+    Franela(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
+    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
     {
-        Cant_Franela=Ammount;
+        Cant_Franela1=Ammount1;
+        Cant_Franela2=Ammount2;
+        Cant_Franela3=Ammount3;
     }
-    int getCantidad()
+    int getCantidad1()
     {
-        return Cant_Franela;
+        return Cant_Franela1;
     }
-    void setPrecio(double Price)
+    int getCantidad2()
     {
-        Precio_Franela=Price;
+        return Cant_Franela2;
     }
-    double getPrecio()
+    int getCantidad3()
     {
-        return Precio_Franela;
+        return Cant_Franela3;
     }
-    void setKilos(double Weight)
+    void setPrecio(double Price1,double Price2,double Price3)
     {
-        Kilos_Franela=Weight;
+        Precio_Franela1=Price1;
+        Precio_Franela2=Price2;
+        Precio_Franela3=Price3;
     }
-    double getKilos()
+    double getPrecio1()
     {
-        return Kilos_Franela;
+        return Precio_Franela1;
+    }
+    double getPrecio2()
+    {
+        return Precio_Franela2;
+    }
+    double getPrecio3()
+    {
+        return Precio_Franela3;
+    }
+    void setKilos(double Weight1,double Weight2,double Weight3)
+    {
+        Kilos_Franela1=Weight1;
+        Kilos_Franela2=Weight2;
+        Kilos_Franela3=Weight3;
+    }
+    double getKilos1()
+    {
+        return Kilos_Franela1;
+    }
+    double getKilos2()
+    {
+        return Kilos_Franela2;
+    }
+    double getKilos3()
+    {
+        return Kilos_Franela3;
     }
 private:
-  int Cant_Franela;
-  double Precio_Franela,Kilos_Franela;
+  int Cant_Franela1,Cant_Franela2,Cant_Franela3;
+  double Precio_Franela1,Precio_Franela2,Precio_Franela3,Kilos_Franela1,Kilos_Franela2,Kilos_Franela3;
 };
 
-Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),Precio_Franela(Price),Kilos_Franela(Weight)
+Franela::Franela(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Franela1(Ammount1),Cant_Franela2(Ammount2),Cant_Franela3(Ammount3),Precio_Franela1(Price1),Precio_Franela2(Price2),Precio_Franela3(Price3),Kilos_Franela1(Weight1),Kilos_Franela2(Weight2),Kilos_Franela3(Weight3)
 {
 
 }
