@@ -84,7 +84,7 @@ public:
     Pique(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Pique=Ammount*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique
+        Cant_Pique=Ammount*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique  
     }
     int getCantidad()
     {
@@ -190,7 +190,7 @@ void Inicializar()
         cout << "Polos:" << endl;
         cout << "   Cantidad: ";
         cin >> Cantidad_1;
-        cout << "Kilos x Prenda: ";
+        cout << "   Kilos x Prenda: ";
         cin >> Kilos_por_prenda_1;
         cout << "\nCamisas:" << endl;
         cout << "   Cantidad: ";
@@ -200,13 +200,25 @@ void Inicializar()
         cout << "\nCuellos:" << endl;
         cout << "   Cantidad: ";
         cin >> Cantidad_3;
-        cout << "Kilos x Prenda: ";
+        cout << "   Kilos x Prenda: ";
         cin >> Kilos_por_prenda_3;
         cout << "--------------------" << endl;
 
         jersey[i]=new Jersey(Cantidad_1,Kilos_por_prenda_1,Precio_1);
         pique[i]=new Pique(Cantidad_2,Kilos_por_prenda_2,Precio_2);
         franela[i]=new Franela(Cantidad_3,Kilos_por_prenda_3,Precio_3);
+
+        jersey[i]->setCantidad(Cantidad_1);
+        jersey[i]->setKilos(Kilos_por_prenda_1);
+        jersey[i]->setPrecio(Precio_1);
+
+        pique[i]->setCantidad(Cantidad_2);
+        pique[i]->setKilos(Kilos_por_prenda_2);
+        pique[i]->setPrecio(Precio_2);
+
+        franela[i]->setCantidad(Cantidad_3);
+        franela[i]->setKilos(Kilos_por_prenda_3);
+        franela[i]->setPrecio(Precio_3);
     }
 }
 
