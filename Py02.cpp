@@ -182,6 +182,19 @@ void Inicializar()
         jersey[i]=new Jersey;
         pique[i]=new Pique;
         franela[i]=new Franela;
+
+        if(i==0)
+        {
+
+        }
+        else if(i==1)
+        {
+
+        }
+        else if(i==2)
+        {
+            
+        }
     }
 }
 
