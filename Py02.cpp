@@ -52,6 +52,22 @@ public:
     {
         return Cant_Jersey;
     }
+    void setPrecio(double Price)
+    {
+        Precio_Jersey=Price;
+    }
+    double getPrecio()
+    {
+        return Precio_Jersey;
+    }
+    void setKilos(double Weight)
+    {
+        Kilos_Jersey=Weight;
+    }
+    double getKilos()
+    {
+        return Kilos_Jersey;
+    }
 private:
   int Cant_Jersey;
   double Precio_Jersey,Kilos_Jersey;
