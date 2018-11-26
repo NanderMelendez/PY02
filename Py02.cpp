@@ -46,7 +46,7 @@ public:
     Jersey(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Jersey=Ammount;
+        Cant_Jersey=Ammount*0.7;
     }
     int getCantidad()
     {
@@ -84,7 +84,7 @@ public:
     Pique(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Pique=Ammount;
+        Cant_Pique=Ammount*0.5;
     }
     int getCantidad()
     {
@@ -122,7 +122,7 @@ public:
     Franela(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Franela=Ammount;
+        Cant_Franela=Ammount*0.3;
     }
     int getCantidad()
     {
@@ -132,7 +132,7 @@ public:
     {
         Precio_Franela=Price;
     }
-    double getPrecio1()
+    double getPrecio()
     {
         return Precio_Franela;
     }
