@@ -67,63 +67,37 @@ Ropa::Ropa(int Ammount,double Price):Cantidad(Ammount),Precio(Price)
 class Jersey:public Ropa
 {
 public:
-    Jersey(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
-    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
+    Jersey(int =0,double =0,double =0);
+    void setCantidad(int Ammount)
     {
-        Cant_Jersey1=Ammount1;
-        Cant_Jersey2=Ammount2;
-        Cant_Jersey3=Ammount3;
+        Cant_Jersey=Ammount;
     }
-    int getCantidad1()
+    int getCantidad()
     {
-        return Cant_Jersey1;
+        return Cant_Jersey;
     }
-    int getCantidad2()
+    void setPrecio(double Price)
     {
-        return Cant_Jersey2;
-    }
-    void setPrecio(double Price1,double Price2,double Price3)
-    {
-        Precio_Jersey1=Price1;
-        Precio_Jersey2=Price2;
-        Precio_Jersey3=Price3;
+        Precio_Jersey=Price;
     }
     double getPrecio1()
     {
-        return Precio_Jersey1;
+        return Precio_Jersey;
     }
-    double getPrecio2()
+    void setKilos(double Weight)
     {
-        return Precio_Jersey2;
+        Kilos_Jersey=Weight;
     }
-    double getPrecio3()
+    double getKilos()
     {
-        return Precio_Jersey3;
-    }
-    void setKilos(double Weight1,double Weight2,double Weight3)
-    {
-        Kilos_Jersey1=Weight1;
-        Kilos_Jersey2=Weight2;
-        Kilos_Jersey3=Weight3;
-    }
-    double getKilos1()
-    {
-        return Kilos_Jersey1;
-    }
-    double getKilos2()
-    {
-        return Kilos_Jersey2;
-    }
-    double getKilos3()
-    {
-        return Kilos_Jersey3;
+        return Kilos_Jersey;
     }
 private:
-  int Cant_Jersey1,Cant_Jersey2,Cant_Jersey3;
-  double Precio_Jersey1,Precio_Jersey2,Precio_Jersey3,Kilos_Jersey1,Kilos_Jersey2,Kilos_Jersey3;
+  int Cant_Jersey;
+  double Precio_Jersey,Kilos_Jersey;
 };
 
-Jersey::Jersey(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Jersey1(Ammount1),Cant_Jersey2(Ammount2),Cant_Jersey3(Ammount3),Precio_Jersey1(Price1),Precio_Jersey2(Price2),Precio_Jersey3(Price3),Kilos_Jersey3(Weight3)
+Jersey::Jersey(int Ammount,double Price,double Weight):Cant_Jersey(Ammount),Precio_Jersey(Price),Kilos_Jersey(Weight)
 {
 
 }
@@ -131,67 +105,37 @@ Jersey::Jersey(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price
 class Pique:public Ropa
 {
 public:
-    Pique(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
-    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
+    Pique(int =0,double =0,double =0);
+    void setCantidad(int Ammount)
     {
-        Cant_Pique1=Ammount1;
-        Cant_Pique2=Ammount2;
-        Cant_Pique3=Ammount3;
+        Cant_Pique=Ammount;
     }
-    int getCantidad1()
+    int getCantidad()
     {
-        return Cant_Pique1;
+        return Cant_Pique;
     }
-    int getCantidad2()
+    void setPrecio(double Price)
     {
-        return Cant_Pique2;
+        Precio_Pique=Price;
     }
-    int getCantidad3()
+    double getPrecio()
     {
-        return Cant_Pique3;
+        return Precio_Pique;
     }
-    void setPrecio(double Price1,double Price2,double Price3)
+    void setKilos(double Weight)
     {
-        Precio_Pique1=Price1;
-        Precio_Pique2=Price2;
-        Precio_Pique3=Price3;
+        Kilos_Pique=Weight;
     }
-    double getPrecio1()
+    double getKilos()
     {
-        return Precio_Pique1;
-    }
-    double getPrecio2()
-    {
-        return Precio_Pique2;
-    }
-    double getPrecio3()
-    {
-        return Precio_Pique3;
-    }
-    void setKilos(double Weight1,double Weight2,double Weight3)
-    {
-        Kilos_Pique1=Weight1;
-        Kilos_Pique2=Weight2;
-        Kilos_Pique3=Weight3;
-    }
-    double getKilos1()
-    {
-        return Kilos_Pique1;
-    }
-    double getKilos2()
-    {
-        return Kilos_Pique2;
-    }
-    double getKilos3()
-    {
-        return Kilos_Pique3;
+        return Kilos_Pique;
     }
 private:
-  int Cant_Pique1,Cant_Pique2,Cant_Pique3;
-  double Precio_Pique1,Precio_Pique2,Precio_Pique3,Kilos_Pique1,Kilos_Pique2,Kilos_Pique3;
+  int Cant_Pique;
+  double Precio_Pique,Kilos_Pique;
 };
 
-Pique::Pique(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Pique1(Ammount1),Cant_Pique2(Ammount2),Cant_Pique3(Ammount3),Precio_Pique1(Price1),Precio_Pique2(Price2),Precio_Pique3(Price3),Kilos_Pique1(Weight1),Kilos_Pique2(Weight2),Kilos_Pique3(Weight3)
+Pique::Pique(int Ammount,double Price,double Weight):Cant_Pique(Ammount),Precio_Pique(Price),Kilos_Pique(Weight)
 {
 
 }
@@ -199,67 +143,37 @@ Pique::Pique(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,
 class Franela:public Ropa
 {
 public:
-    Franela(int =0,int =0,int =0,double =0,double =0,double =0,double =0,double =0,double =0);
-    void setCantidad(int Ammount1,int Ammount2,int Ammount3)
+    Franela(int =0,double =0,double =0);
+    void setCantidad(int Ammount)
     {
-        Cant_Franela1=Ammount1;
-        Cant_Franela2=Ammount2;
-        Cant_Franela3=Ammount3;
+        Cant_Franela=Ammount;
     }
-    int getCantidad1()
+    int getCantidad()
     {
-        return Cant_Franela1;
+        return Cant_Franela;
     }
-    int getCantidad2()
+    void setPrecio(double Price)
     {
-        return Cant_Franela2;
-    }
-    int getCantidad3()
-    {
-        return Cant_Franela3;
-    }
-    void setPrecio(double Price1,double Price2,double Price3)
-    {
-        Precio_Franela1=Price1;
-        Precio_Franela2=Price2;
-        Precio_Franela3=Price3;
+        Precio_Franela=Price;
     }
     double getPrecio1()
     {
-        return Precio_Franela1;
+        return Precio_Franela;
     }
-    double getPrecio2()
+    void setKilos(double Weight)
     {
-        return Precio_Franela2;
+        Kilos_Franela=Weight;
     }
-    double getPrecio3()
+    double getKilos()
     {
-        return Precio_Franela3;
-    }
-    void setKilos(double Weight1,double Weight2,double Weight3)
-    {
-        Kilos_Franela1=Weight1;
-        Kilos_Franela2=Weight2;
-        Kilos_Franela3=Weight3;
-    }
-    double getKilos1()
-    {
-        return Kilos_Franela1;
-    }
-    double getKilos2()
-    {
-        return Kilos_Franela2;
-    }
-    double getKilos3()
-    {
-        return Kilos_Franela3;
+        return Kilos_Franela;
     }
 private:
-  int Cant_Franela1,Cant_Franela2,Cant_Franela3;
-  double Precio_Franela1,Precio_Franela2,Precio_Franela3,Kilos_Franela1,Kilos_Franela2,Kilos_Franela3;
+  int Cant_Franela;
+  double Precio_Franela,Kilos_Franela;
 };
 
-Franela::Franela(int Ammount1,int Ammount2,int Ammount3,double Price1,double Price2,double Price3,double Weight1,double Weight2,double Weight3):Cant_Franela1(Ammount1),Cant_Franela2(Ammount2),Cant_Franela3(Ammount3),Precio_Franela1(Price1),Precio_Franela2(Price2),Precio_Franela3(Price3),Kilos_Franela1(Weight1),Kilos_Franela2(Weight2),Kilos_Franela3(Weight3)
+Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),Precio_Franela(Price),Kilos_Franela(Weight)
 {
 
 }
@@ -267,7 +181,7 @@ Franela::Franela(int Ammount1,int Ammount2,int Ammount3,double Price1,double Pri
 void Inicializar()
 {
     int Cantidad_1,Cantidad_2,Cantidad_3;
-    double Kilos_por_prenda_1,Kilos_por_prenda_2,Kilos_por_prenda_3;
+    double Kilos_por_prenda_1,Kilos_por_prenda_2,Kilos_por_prenda_3,Precio_1,Precio_2,Precio_3;
 
     Jersey *jersey[3];
     Pique *pique[3];
@@ -278,14 +192,23 @@ void Inicializar()
         if(i==0)
         {
             cout << "\nJERSEY:" << endl;
+            Precio_1=30;
+            Precio_2=50;
+            Precio_3=5;
         }
         else if(i==1)
         {
             cout << "\nPIQUE:" << endl;
+            Precio_1=60;
+            Precio_2=75;
+            Precio_3=10;
         }
         else if(i==2)
         {
             cout << "\nFRANELA:" << endl;
+            Precio_1=60;
+            Precio_2=80;
+            Precio_3=15;
         }
         cout << "--------------------" << endl;
         cout << "Polos:" << endl;
@@ -305,22 +228,9 @@ void Inicializar()
         cin >> Kilos_por_prenda_3;
         cout << "--------------------" << endl;
 
-        jersey[i]=new Jersey;
-        pique[i]=new Pique;
-        franela[i]=new Franela;
-
-        if(i==0)
-        {
-
-        }
-        else if(i==1)
-        {
-
-        }
-        else if(i==2)
-        {
-            
-        }
+        jersey[i]=new Jersey(Cantidad_1,Kilos_por_prenda_1,Precio_1);
+        pique[i]=new Pique(Cantidad_2,Kilos_por_prenda_2,Precio_2);
+        franela[i]=new Franela(Cantidad_3,Kilos_por_prenda_3,Precio_3);
     }
 }
 
