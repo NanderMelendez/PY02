@@ -5,20 +5,12 @@ using namespace std;
 class Ropa
 {
 public:
-    Ropa(int =0,double =0);
+    Ropa(int =0,double =0,double =0);
     virtual void setCantidad(int Ammount)
     {
         Cantidad=Ammount;
     }
-    virtual int getCantidad1()
-    {
-        return Cantidad; 
-    }
-    virtual int getCantidad2()
-    {
-        return Cantidad; 
-    }
-    virtual int getCantidad3()
+    virtual int getCantidad()
     {
         return Cantidad; 
     }
@@ -26,15 +18,7 @@ public:
     {
         Precio=Price;
     }
-    virtual double getPrecio1()
-    {
-        return Precio;
-    }
-    virtual double getPrecio2()
-    {
-        return Precio;
-    }
-    virtual double getPrecio3()
+    virtual double getPrecio()
     {
         return Precio;
     }
@@ -42,15 +26,7 @@ public:
     {
         Kilos=Weight;
     }
-    virtual double getKilos1()
-    {
-        return Kilos;
-    }
-    virtual double getKilos2()
-    {
-        return Kilos;
-    }
-    virtual double getKilos3()
+    virtual double getKilos()
     {
         return Kilos;
     }
@@ -59,7 +35,7 @@ private:
   double Precio,Kilos;
 };
 
-Ropa::Ropa(int Ammount,double Price):Cantidad(Ammount),Precio(Price)
+Ropa::Ropa(int Ammount,double Price,double Weight):Cantidad(Ammount),Precio(Price),Kilos(Weight)
 {
 
 }
