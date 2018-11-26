@@ -46,7 +46,7 @@ public:
     Jersey(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Jersey=Ammount*0.7;
+        Cant_Jersey=Ammount*0.7; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique
     }
     int getCantidad()
     {
@@ -84,7 +84,7 @@ public:
     Pique(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Pique=Ammount*0.5;
+        Cant_Pique=Ammount*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique
     }
     int getCantidad()
     {
@@ -122,7 +122,7 @@ public:
     Franela(int =0,double =0,double =0);
     void setCantidad(int Ammount)
     {
-        Cant_Franela=Ammount*0.3;
+        Cant_Franela=Ammount*0.3; //Cada kilo de hilo de Pique produce 0.3 kilos de tela de Pique
     }
     int getCantidad()
     {
