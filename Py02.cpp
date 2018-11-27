@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 using namespace std;
 
@@ -44,27 +45,27 @@ class Jersey:public Ropa
 {
 public:
     Jersey(int =0,double =0,double =0);
-    void setCantidad(int Ammount) override
+    void setCantidad(int Ammount) 
     {
         Cant_Jersey=Ammount;
     }
-    int getCantidad() override
+    int getCantidad()
     {
         return Cant_Jersey;
     }
-    void setPrecio(double Price) override
+    void setPrecio(double Price)
     {
         Precio_Jersey=Price;
     }
-    double getPrecio() override
+    double getPrecio()
     {
         return Precio_Jersey;
     }
-    void setKilos(double Weight) override
+    void setKilos(double Weight)
     {
         Kilos_Jersey=Weight*0.7; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique
     }
-    double getKilos() override
+    double getKilos()
     {
         return Kilos_Jersey;
     }
@@ -82,27 +83,27 @@ class Pique:public Ropa
 {
 public:
     Pique(int =0,double =0,double =0);
-    void setCantidad(int Ammount) override
+    void setCantidad(int Ammount)
     {
         Cant_Pique=Ammount;
     }
-    int getCantidad() override
+    int getCantidad()
     {
         return Cant_Pique;
     }
-    void setPrecio(double Price) override
+    void setPrecio(double Price)
     {
         Precio_Pique=Price;
     }
-    double getPrecio() override
+    double getPrecio()
     {
         return Precio_Pique;
     }
-    void setKilos(double Weight) override
+    void setKilos(double Weight)
     {
         Kilos_Pique=Weight*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique
     }
-    double getKilos() override
+    double getKilos()
     {
         return Kilos_Pique;
     }
@@ -120,27 +121,27 @@ class Franela:public Ropa
 {
 public:
     Franela(int =0,double =0,double =0);
-    void setCantidad(int Ammount) override
+    void setCantidad(int Ammount)
     {
         Cant_Franela=Ammount;
     }
-    int getCantidad() override
+    int getCantidad()
     {
         return Cant_Franela;
     }
-    void setPrecio(double Price) override
+    void setPrecio(double Price)
     {
         Precio_Franela=Price;
     }
-    double getPrecio() override
+    double getPrecio()
     {
         return Precio_Franela;
     }
-    void setKilos(double Weight) override
+    void setKilos(double Weight)
     {
         Kilos_Franela=Weight*0.3; //Cada kilo de hilo de Pique produce 0.3 kilos de tela de Pique
     }
-    double getKilos() override
+    double getKilos()
     {
         return Kilos_Franela;
     }
@@ -156,52 +157,55 @@ Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),P
 
 //--------- CÁLCULO TIEMPOS ------------------
 
-double Calculo_TiemposJ(Jersey &j,int i)
+void Calculo_TiemposJ(Jersey &j,int i)
 {
-    cout << "JERSEY:" << endl;
+    const double totalJersey=j.getCantidad()*j.getKilos();
+
     if(i==0)
     {
-        cout << "   Polos: " << j.getKilos()/40.20 << " horas." << endl;
+        cout << "   Polos: " << setprecision(4) << (24.6*totalJersey)/4<< " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << j.getKilos()/40.50 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(4) << (31.5*totalJersey)/10 << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << j.getKilos()/40.05 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(4) << (21.15*totalJersey)/1 << " horas." << endl;
     }
 }
-double Calculo_TiemposP(Pique &p,int i)
+void Calculo_TiemposP(Pique &p,int i)
 {
-    cout << "JERSEY:" << endl;
+    const double totalPique=p.getCantidad()*p.getKilos();
+
     if(i==0)
     {
-        cout << "   Polos: " << p.getKilos()/40.22 << " horas." << endl;
+        cout << "   Polos: " << setprecision(4) << (25.06*totalPique)/4.4 << " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << p.getKilos()/40.33 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(4) << (27.59*totalPique)/6.6 << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << p.getKilos()/40.04 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(4) << (20.92*totalPique)/0.8 << " horas." << endl;
     }
 }
-double Calculo_TiemposF(Franela &f,int i)
+void Calculo_TiemposF(Franela &f,int i)
 {
-    cout << "JERSEY:" << endl;
+    const double totalFranela=f.getCantidad()*f.getKilos();
+
     if(i==0)
     {
-        cout << "   Polos: " << f.getKilos()/40.25 << " horas." << endl;
+        cout << "   Polos: " << setprecision(4) << (25.75*totalFranela)/5 << " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << f.getKilos()/40.50 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(4) << (31.5*totalFranela)/10 << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << f.getKilos()/40.05 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(4) << (21.15*totalFranela)/1 << " horas." << endl;
     }
 }
 
@@ -272,11 +276,23 @@ void Inicializar()
         franela[i]->setCantidad(Cantidad_3);
         franela[i]->setKilos(Kilos_por_prenda_3);
         franela[i]->setPrecio(Precio_3);
-
+    }
+    cout << "\nJERSEY:" << endl;
+    for(int i=0;i<3;i++)
+    {
         Calculo_TiemposJ(*jersey[i],i);
+    }
+    cout << "PIQUE:" << endl;
+    for(int i=0;i<3;i++)
+    {
         Calculo_TiemposP(*pique[i],i);
+    }
+    cout << "FRANELA:" << endl;
+    for(int i=0;i<3;i++)
+    {
         Calculo_TiemposF(*franela[i],i);
     }
+
 }
 
 /*
