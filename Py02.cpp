@@ -159,53 +159,56 @@ Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),P
 
 void Calculo_TiemposJ(Jersey &j,int i)
 {
-    const double totalJersey=j.getCantidad()*j.getKilos();
+    const double totalJersey=j.getCantidad()*j.getKilos(); //Total Masa
+    const double TTAtimes=(1/totalJersey)+(10/totalJersey)+(20/totalJersey); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
     if(i==0)
     {
-        cout << "   Polos: " << setprecision(4) << (24.6*totalJersey)/4<< " horas." << endl;
+        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.20/totalJersey)<< " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << setprecision(4) << (31.5*totalJersey)/10 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.50/totalJersey) << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << setprecision(4) << (21.15*totalJersey)/1 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.05/totalJersey) << " horas." << endl;
     }
 }
 void Calculo_TiemposP(Pique &p,int i)
 {
-    const double totalPique=p.getCantidad()*p.getKilos();
+    const double totalPique=p.getCantidad()*p.getKilos(); //Total Masa
+    const double TTAtimes=(1/totalPique)+(10/totalPique)+(20/totalPique); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
     if(i==0)
     {
-        cout << "   Polos: " << setprecision(4) << (25.06*totalPique)/4.4 << " horas." << endl;
+        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.22/totalPique) << " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << setprecision(4) << (27.59*totalPique)/6.6 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.33/totalPique) << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << setprecision(4) << (20.92*totalPique)/0.8 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.04/totalPique) << " horas." << endl;
     }
 }
 void Calculo_TiemposF(Franela &f,int i)
 {
-    const double totalFranela=f.getCantidad()*f.getKilos();
+    const double totalFranela=f.getCantidad()*f.getKilos(); //Total Masa
+    const double TTAtimes=(1/totalFranela)+(10/totalFranela)+(20/totalFranela); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
     if(i==0)
     {
-        cout << "   Polos: " << setprecision(4) << (25.75*totalFranela)/5 << " horas." << endl;
+        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.25/totalFranela) << " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << setprecision(4) << (31.5*totalFranela)/10 << " horas." << endl;
+        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.50/totalFranela) << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << setprecision(4) << (21.15*totalFranela)/1 << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.05/totalFranela) << " horas." << endl;
     }
 }
 
@@ -296,11 +299,6 @@ void Inicializar()
 }
 
 /*
-double Calculo_Materia_Prima() //[Friend "UNDEFINED"]
-{
-
-}
-
 double Calculo_Costos() //[Friend "UNDEFINED"]
 {
 
