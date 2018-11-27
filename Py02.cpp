@@ -6,7 +6,7 @@ using namespace std;
 class Ropa
 {
 public:
-    Ropa(int =0,double =0,double =0);
+    explicit Ropa(int =0,double =0,double =0);
     virtual void setCantidad(int Ammount)
     {
         Cantidad=Ammount;
@@ -44,28 +44,28 @@ Ropa::Ropa(int Ammount,double Price,double Weight):Cantidad(Ammount),Precio(Pric
 class Jersey:public Ropa
 {
 public:
-    Jersey(int =0,double =0,double =0);
-    void setCantidad(int Ammount) 
+    explicit Jersey(int =0,double =0,double =0);
+    void setCantidad(int Ammount) override
     {
         Cant_Jersey=Ammount;
     }
-    int getCantidad()
+    int getCantidad() override
     {
         return Cant_Jersey;
     }
-    void setPrecio(double Price)
+    void setPrecio(double Price) override
     {
         Precio_Jersey=Price;
     }
-    double getPrecio()
+    double getPrecio() override
     {
         return Precio_Jersey;
     }
-    void setKilos(double Weight)
+    void setKilos(double Weight) override
     {
         Kilos_Jersey=Weight*0.7; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique
     }
-    double getKilos()
+    double getKilos() override
     {
         return Kilos_Jersey;
     }
@@ -82,28 +82,28 @@ Jersey::Jersey(int Ammount,double Price,double Weight):Cant_Jersey(Ammount),Prec
 class Pique:public Ropa
 {
 public:
-    Pique(int =0,double =0,double =0);
-    void setCantidad(int Ammount)
+    explicit Pique(int =0,double =0,double =0);
+    void setCantidad(int Ammount) override
     {
         Cant_Pique=Ammount;
     }
-    int getCantidad()
+    int getCantidad() override
     {
         return Cant_Pique;
     }
-    void setPrecio(double Price)
+    void setPrecio(double Price) override
     {
         Precio_Pique=Price;
     }
-    double getPrecio()
+    double getPrecio() override
     {
         return Precio_Pique;
     }
-    void setKilos(double Weight)
+    void setKilos(double Weight) override
     {
         Kilos_Pique=Weight*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique
     }
-    double getKilos()
+    double getKilos() override
     {
         return Kilos_Pique;
     }
@@ -120,28 +120,28 @@ Pique::Pique(int Ammount,double Price,double Weight):Cant_Pique(Ammount),Precio_
 class Franela:public Ropa
 {
 public:
-    Franela(int =0,double =0,double =0);
-    void setCantidad(int Ammount)
+    explicit Franela(int =0,double =0,double =0);
+    void setCantidad(int Ammount) override
     {
         Cant_Franela=Ammount;
     }
-    int getCantidad()
+    int getCantidad() override
     {
         return Cant_Franela;
     }
-    void setPrecio(double Price)
+    void setPrecio(double Price) override
     {
         Precio_Franela=Price;
     }
-    double getPrecio()
+    double getPrecio() override
     {
         return Precio_Franela;
     }
-    void setKilos(double Weight)
+    void setKilos(double Weight) override
     {
         Kilos_Franela=Weight*0.3; //Cada kilo de hilo de Pique produce 0.3 kilos de tela de Pique
     }
-    double getKilos()
+    double getKilos() override
     {
         return Kilos_Franela;
     }
@@ -159,36 +159,68 @@ Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),P
 
 void Calculo_Tiempos(Ropa &r,int i,double velocidad)
 {
-    const double total=r.getCantidad()*r.getKilos(); //Total Masa
-    const double TTAtimes=(1/total)+(10/total)+(20/total); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
+    double total=r.getCantidad()*r.getKilos(); //Total Masa
+    double TTAtimes=(1/total)+(10/total)+(20/total); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
     if(i==0)
     {
-        cout << "   Polos: " << setprecision(3) << TTAtimes+(velocidad/total)<< " horas." << endl;
+        cout << "   Polos: ";
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << setprecision(3) << TTAtimes+(velocidad/total) << " horas." << endl;
+        cout << "   Camisas: ";
     }
     else
     {
-        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(velocidad/total) << " horas." << endl;
+        cout << "   Cuellos: ";
     }
+    cout << setprecision(3) << TTAtimes+(velocidad/total) << " horas." << endl;
 }
 
 //--------- CÁLCULO MATERIA PRIMA ------------------
 
-void Calculo_Materia_Prima()
+void Calculo_Materia_Prima(Ropa &r,int i)
 {
+    if(i==0)
+    {
+        cout << "   Polos: ";
+    }
+    else if(i==1)
+    {
+        cout << "   Camisas: ";
+    }
+    else
+    {
+        cout << "   Cuellos: ";
+    }
+    cout << setprecision(3) << r.getCantidad()*r.getKilos() << " Kg." << endl;
+}
 
+//--------- CÁLCULO COSTOS ------------------
+
+void Calculo_Costos(Ropa &r,int i)
+{
+    if(i==0)
+    {
+        cout << "   Polos: S/.";
+    }
+    else if(i==1)
+    {
+        cout << "   Camisas: S/.";
+    }
+    else
+    {
+        cout << "   Cuellos: S/.";
+    }
+    cout << setprecision(3) << r.getCantidad()*r.getPrecio() << endl;
 }
 
 //--------- INICIALIZAR ------------------
 
 void Inicializar()
 {
-    int Cantidad_1,Cantidad_2,Cantidad_3;
-    double Kilos_por_prenda_1,Kilos_por_prenda_2,Kilos_por_prenda_3,Precio_1,Precio_2,Precio_3,velocidad;
+    int Cantidad;
+    double Kilos_por_prenda,Precio,velocidad;
 
     Jersey *jersey[3];
     Pique *pique[3];
@@ -199,57 +231,115 @@ void Inicializar()
         if(i==0)
         {
             cout << "\nJERSEY:" << endl;
-            Precio_1=30;
-            Precio_2=50;
-            Precio_3=5;
         }
         else if(i==1)
         {
             cout << "\nPIQUE:" << endl;
-            Precio_1=60;
-            Precio_2=75;
-            Precio_3=10;
         }
         else
         {
             cout << "\nFRANELA:" << endl;
-            Precio_1=60;
-            Precio_2=80;
-            Precio_3=15;
         }
         cout << "--------------------" << endl;
         cout << "Polos:" << endl;
         cout << "   Cantidad: ";
-        cin >> Cantidad_1;
+        cin >> Cantidad;
         cout << "   Kilos x Prenda: ";
-        cin >> Kilos_por_prenda_1;
+        cin >> Kilos_por_prenda;
+        if(i==0)
+        {
+            Precio=30;
+            jersey[0]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+
+            jersey[0]->setCantidad(Cantidad);
+            jersey[0]->setKilos(Kilos_por_prenda);
+            jersey[0]->setPrecio(Precio);
+        }
+        else if(i==1)
+        {
+            Precio=60;
+            pique[0]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+
+            pique[0]->setCantidad(Cantidad);
+            pique[0]->setKilos(Kilos_por_prenda);
+            pique[0]->setPrecio(Precio);
+        }
+        else
+        {
+            Precio=60;
+            franela[0]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+
+            franela[0]->setCantidad(Cantidad);
+            franela[0]->setKilos(Kilos_por_prenda);
+            franela[0]->setPrecio(Precio);
+        }
+
         cout << "\nCamisas:" << endl;
         cout << "   Cantidad: ";
-        cin >> Cantidad_2;
+        cin >> Cantidad;
         cout << "   Kilos x Prenda: ";
-        cin >> Kilos_por_prenda_2;
+        cin >> Kilos_por_prenda;
+        if(i==0)
+        {
+            Precio=50;
+            jersey[1]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+
+            jersey[1]->setCantidad(Cantidad);
+            jersey[1]->setKilos(Kilos_por_prenda);
+            jersey[1]->setPrecio(Precio);
+        }
+        else if(i==1)
+        {
+            Precio=75;
+            pique[1]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+
+            pique[1]->setCantidad(Cantidad);
+            pique[1]->setKilos(Kilos_por_prenda);
+            pique[1]->setPrecio(Precio);
+        }
+        else
+        {
+            Precio=80;
+            franela[1]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+
+            franela[1]->setCantidad(Cantidad);
+            franela[1]->setKilos(Kilos_por_prenda);
+            franela[1]->setPrecio(Precio);
+        }
+
         cout << "\nCuellos:" << endl;
         cout << "   Cantidad: ";
-        cin >> Cantidad_3;
+        cin >> Cantidad;
         cout << "   Kilos x Prenda: ";
-        cin >> Kilos_por_prenda_3;
+        cin >> Kilos_por_prenda;
+        if(i==0)
+        {
+            Precio=5;
+            jersey[2]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+
+            jersey[2]->setCantidad(Cantidad);
+            jersey[2]->setKilos(Kilos_por_prenda);
+            jersey[2]->setPrecio(Precio);
+        }
+        else if(i==1)
+        {
+            Precio=10;
+            pique[2]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+
+            pique[2]->setCantidad(Cantidad);
+            pique[2]->setKilos(Kilos_por_prenda);
+            pique[2]->setPrecio(Precio);
+        }
+        else
+        {
+            Precio=15;
+            franela[2]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+
+            franela[2]->setCantidad(Cantidad);
+            franela[2]->setKilos(Kilos_por_prenda);
+            franela[2]->setPrecio(Precio);
+        }
         cout << "--------------------" << endl;
-
-        jersey[i]=new Jersey(Cantidad_1,Kilos_por_prenda_1,Precio_1);
-        pique[i]=new Pique(Cantidad_2,Kilos_por_prenda_2,Precio_2);
-        franela[i]=new Franela(Cantidad_3,Kilos_por_prenda_3,Precio_3);
-
-        jersey[i]->setCantidad(Cantidad_1);
-        jersey[i]->setKilos(Kilos_por_prenda_1);
-        jersey[i]->setPrecio(Precio_1);
-
-        pique[i]->setCantidad(Cantidad_2);
-        pique[i]->setKilos(Kilos_por_prenda_2);
-        pique[i]->setPrecio(Precio_2);
-
-        franela[i]->setCantidad(Cantidad_3);
-        franela[i]->setKilos(Kilos_por_prenda_3);
-        franela[i]->setPrecio(Precio_3);
     }
     cout << "\n Tiempos para completar el pedido." << endl;
     cout << "--------------------------------- " << endl;
@@ -306,14 +396,44 @@ void Inicializar()
         Calculo_Tiempos(*franela[i],i,velocidad);
     }
 
+    cout << "\n Materia prima requerida." << endl;
+    cout << "--------------------------" << endl;
+    cout << "JERSEY:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Materia_Prima(*jersey[i],i);
+    }
+    cout << "PIQUE:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Materia_Prima(*pique[i],i);
+    }
+    cout << "FRANELA:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Materia_Prima(*franela[i],i);
+    }
+
+    cout << "\n Costos. " << endl;
+    cout << "---------" << endl;
+    cout << "JERSEY:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Costos(*jersey[i],i);
+    }
+    cout << "PIQUE:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Costos(*pique[i],i);
+    }
+    cout << "FRANELA:" << endl;
+    for(int i=0;i<3;i++)
+    {
+        Calculo_Costos(*franela[i],i);
+    }
 }
 
 /*
-double Calculo_Costos() //[Friend "UNDEFINED"]
-{
-
-}
-
 void Salida() //[Friend "UNDEFINED"]
 {
     fstream pedido("Pedido.txt",ios::out);
