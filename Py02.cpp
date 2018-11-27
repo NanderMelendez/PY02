@@ -157,59 +157,30 @@ Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),P
 
 //--------- CÁLCULO TIEMPOS ------------------
 
-void Calculo_TiemposJ(Jersey &j,int i)
+void Calculo_Tiempos(Ropa &r,int i,double velocidad)
 {
-    const double totalJersey=j.getCantidad()*j.getKilos(); //Total Masa
-    const double TTAtimes=(1/totalJersey)+(10/totalJersey)+(20/totalJersey); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
+    const double total=r.getCantidad()*r.getKilos(); //Total Masa
+    const double TTAtimes=(1/total)+(10/total)+(20/total); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
     if(i==0)
     {
-        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.20/totalJersey)<< " horas." << endl;
+        cout << "   Polos: " << setprecision(3) << TTAtimes+(velocidad/total)<< " horas." << endl;
     }
     else if(i==1)
     {
-        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.50/totalJersey) << " horas." << endl;
+        cout << "   Camisas: " << setprecision(3) << TTAtimes+(velocidad/total) << " horas." << endl;
     }
     else
     {
-        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.05/totalJersey) << " horas." << endl;
+        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(velocidad/total) << " horas." << endl;
     }
 }
-void Calculo_TiemposP(Pique &p,int i)
-{
-    const double totalPique=p.getCantidad()*p.getKilos(); //Total Masa
-    const double TTAtimes=(1/totalPique)+(10/totalPique)+(20/totalPique); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
 
-    if(i==0)
-    {
-        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.22/totalPique) << " horas." << endl;
-    }
-    else if(i==1)
-    {
-        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.33/totalPique) << " horas." << endl;
-    }
-    else
-    {
-        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.04/totalPique) << " horas." << endl;
-    }
-}
-void Calculo_TiemposF(Franela &f,int i)
-{
-    const double totalFranela=f.getCantidad()*f.getKilos(); //Total Masa
-    const double TTAtimes=(1/totalFranela)+(10/totalFranela)+(20/totalFranela); //Obviar proceso (velocidad1/totalMasa)+(velocidad2/totalMasa)+(velocidad3/totalMasa); TTA=Tejido,Teñido,Acabado
+//--------- CÁLCULO MATERIA PRIMA ------------------
 
-    if(i==0)
-    {
-        cout << "   Polos: " << setprecision(3) << TTAtimes+(0.25/totalFranela) << " horas." << endl;
-    }
-    else if(i==1)
-    {
-        cout << "   Camisas: " << setprecision(3) << TTAtimes+(0.50/totalFranela) << " horas." << endl;
-    }
-    else
-    {
-        cout << "   Cuellos: " << setprecision(3) << TTAtimes+(0.05/totalFranela) << " horas." << endl;
-    }
+void Calculo_Materia_Prima()
+{
+
 }
 
 //--------- INICIALIZAR ------------------
@@ -217,7 +188,7 @@ void Calculo_TiemposF(Franela &f,int i)
 void Inicializar()
 {
     int Cantidad_1,Cantidad_2,Cantidad_3;
-    double Kilos_por_prenda_1,Kilos_por_prenda_2,Kilos_por_prenda_3,Precio_1,Precio_2,Precio_3;
+    double Kilos_por_prenda_1,Kilos_por_prenda_2,Kilos_por_prenda_3,Precio_1,Precio_2,Precio_3,velocidad;
 
     Jersey *jersey[3];
     Pique *pique[3];
@@ -280,20 +251,59 @@ void Inicializar()
         franela[i]->setKilos(Kilos_por_prenda_3);
         franela[i]->setPrecio(Precio_3);
     }
-    cout << "\nJERSEY:" << endl;
+    cout << "\n Tiempos para completar el pedido." << endl;
+    cout << "--------------------------------- " << endl;
+
+    cout << "JERSEY:" << endl;
     for(int i=0;i<3;i++)
     {
-        Calculo_TiemposJ(*jersey[i],i);
+        if(i==0)
+        {
+            velocidad=0.20;
+        }
+        else if(i==1)
+        {
+            velocidad=0.50;
+        }
+        else
+        {
+            velocidad=0.05;
+        }
+        Calculo_Tiempos(*jersey[i],i,velocidad);
     }
     cout << "PIQUE:" << endl;
     for(int i=0;i<3;i++)
     {
-        Calculo_TiemposP(*pique[i],i);
+        if(i==0)
+        {
+            velocidad=0.22;
+        }
+        else if(i==1)
+        {
+            velocidad=0.33;
+        }
+        else
+        {
+            velocidad=0.04;
+        }
+        Calculo_Tiempos(*pique[i],i,velocidad);
     }
     cout << "FRANELA:" << endl;
     for(int i=0;i<3;i++)
     {
-        Calculo_TiemposF(*franela[i],i);
+        if(i==0)
+        {
+            velocidad=0.25;
+        }
+        else if(i==1)
+        {
+            velocidad=0.50;
+        }
+        else
+        {
+            velocidad=0.05;
+        }
+        Calculo_Tiempos(*franela[i],i,velocidad);
     }
 
 }
