@@ -36,7 +36,7 @@ private:
     double Precio,Kilos;
 };
 
-Ropa::Ropa(int Ammount,double Price,double Weight):Cantidad(Ammount),Precio(Price),Kilos(Weight)
+Ropa::Ropa(int Ammount,double Weight,double Price):Cantidad(Ammount),Kilos(Weight),Precio(Price)
 {
 
 }
@@ -63,7 +63,7 @@ public:
     }
     void setKilos(double Weight) override
     {
-        Kilos_Jersey=Weight*0.7; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique
+        Kilos_Jersey=Weight*0.7*100/90; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique || Rendimiento 90%, entonces 0.7*(90%)^-1 para hallar la cantidad original de kilos de tela
     }
     double getKilos() override
     {
@@ -74,7 +74,7 @@ private:
     double Precio_Jersey,Kilos_Jersey;
 };
 
-Jersey::Jersey(int Ammount,double Price,double Weight):Cant_Jersey(Ammount),Precio_Jersey(Price),Kilos_Jersey(Weight)
+Jersey::Jersey(int Ammount,double Weight,double Price):Cant_Jersey(Ammount),Kilos_Jersey(Weight),Precio_Jersey(Price)
 {
 
 }
@@ -101,7 +101,7 @@ public:
     }
     void setKilos(double Weight) override
     {
-        Kilos_Pique=Weight*0.5; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique
+        Kilos_Pique=Weight*0.5*100/90; //Cada kilo de hilo de Pique produce 0.5 kilos de tela de Pique || Rendimiento 90%, entonces 0.5*(90%)^-1 para hallar la cantidad original de kilos de tela
     }
     double getKilos() override
     {
@@ -112,7 +112,7 @@ private:
     double Precio_Pique,Kilos_Pique;
 };
 
-Pique::Pique(int Ammount,double Price,double Weight):Cant_Pique(Ammount),Precio_Pique(Price),Kilos_Pique(Weight)
+Pique::Pique(int Ammount,double Weight,double Price):Cant_Pique(Ammount),Kilos_Pique(Weight),Precio_Pique(Price)
 {
 
 }
@@ -139,7 +139,7 @@ public:
     }
     void setKilos(double Weight) override
     {
-        Kilos_Franela=Weight*0.3; //Cada kilo de hilo de Pique produce 0.3 kilos de tela de Pique
+        Kilos_Franela=Weight*0.3*100/90; //Cada kilo de hilo de Pique produce 0.3 kilos de tela de Pique || Rendimiento 90%, entonces 0.3*(90%)^-1 para hallar la cantidad original de kilos de tela
     }
     double getKilos() override
     {
@@ -150,7 +150,7 @@ private:
     double Precio_Franela,Kilos_Franela;
 };
 
-Franela::Franela(int Ammount,double Price,double Weight):Cant_Franela(Ammount),Precio_Franela(Price),Kilos_Franela(Weight)
+Franela::Franela(int Ammount,double Weight,double Price):Cant_Franela(Ammount),Kilos_Franela(Weight),Precio_Franela(Price)
 {
 
 }
@@ -212,7 +212,39 @@ void Calculo_Costos(Ropa &r,int i)
     {
         cout << "   Cuellos: S/.";
     }
-    cout << setprecision(3) << r.getCantidad()*r.getPrecio() << endl;
+    cout << setprecision(10) << r.getCantidad()*r.getPrecio() << endl;
+}
+
+//--------- SALIDA ------------------
+
+void Salida(Ropa &j1,Ropa &j2,Ropa &j3,Ropa &p1,Ropa &p2,Ropa &p3,Ropa &f1,Ropa &f2,Ropa &f3)
+{
+    srand(time(NULL));
+    cout << "Imprimiendo recibo..." << endl;
+    fstream pedido("Pedido.txt",ios::app);
+
+    pedido << "***************************************************************************" << endl;
+    pedido << " Textilería" << endl;
+    pedido << "       ~¡LOS HACKERS DE LIMA LIMÓN!~®" << endl;
+    pedido << "===========================================================================" << endl;
+    pedido << "Boleta N°00" << rand()%100+900 << "." << endl << endl;
+    pedido << "       CANTIDAD       MATERIAL REQUERIDO           COSTO" << endl;
+    pedido << "JERSEY:" << endl;
+    pedido << "     " << j1.getCantidad() << " Polos.           " << setprecision(3) << j1.getCantidad()*j1.getKilos() << " Kg.                 S/." << setprecision(10) << j1.getCantidad()*j1.getPrecio() << endl;
+    pedido << "     " << j2.getCantidad() << " Camisas.           " << setprecision(3) << j2.getCantidad()*j2.getKilos() << " Kg.                 S/." << setprecision(10) << j2.getCantidad()*j2.getPrecio() << endl;
+    pedido << "     " << j3.getCantidad() << " Cuellos.           " << setprecision(3) << j3.getCantidad()*j3.getKilos() << " Kg.                 S/." << setprecision(10) << j3.getCantidad()*j3.getPrecio() << endl;
+    pedido << "     Total: " << j1.getCantidad()+j2.getCantidad()+j3.getCantidad()  << "            " << setprecision(3) << j1.getCantidad()*j1.getKilos()+j2.getCantidad()*j2.getKilos()+j3.getCantidad()*j3.getKilos()  << " Kg.                  S/." << setprecision(10) << j1.getCantidad()*j1.getPrecio()+j2.getCantidad()*j2.getPrecio()+j3.getCantidad()*j3.getPrecio() << endl << endl;
+    pedido << "PIQUE:" << endl;
+    pedido << "     " << p1.getCantidad() << " Polos.           " << setprecision(3) << p1.getCantidad()*p1.getKilos() << " Kg.                 S/." << setprecision(10) << p1.getCantidad()*p1.getPrecio() << endl;
+    pedido << "     " << p2.getCantidad() << " Camisas.           " << setprecision(3) << p2.getCantidad()*p2.getKilos() << " Kg.                 S/." << setprecision(10) << p2.getCantidad()*p2.getPrecio() << endl;
+    pedido << "     " << p3.getCantidad() << " Cuellos.           " << setprecision(3) << p3.getCantidad()*p3.getKilos() << " Kg.                 S/." << setprecision(10) << p3.getCantidad()*p3.getPrecio() << endl;
+    pedido << "     Total: " << p1.getCantidad()+p2.getCantidad()+p3.getCantidad()  << "            " << setprecision(3) << p1.getCantidad()*p1.getKilos()+p2.getCantidad()*p2.getKilos()+p3.getCantidad()*p3.getKilos()  << " Kg.                  S/." << setprecision(10) << p1.getCantidad()*p1.getPrecio()+p2.getCantidad()*p2.getPrecio()+p3.getCantidad()*p3.getPrecio() << endl << endl;
+    pedido << "FRANELA:" << endl;
+    pedido << "     " << f1.getCantidad() << " Polos.           " << setprecision(3) << f1.getCantidad()*f1.getKilos() << " Kg.                 S/." << setprecision(10) << f1.getCantidad()*f1.getPrecio() << endl;
+    pedido << "     " << f2.getCantidad() << " Camisas.           " << setprecision(3) << f2.getCantidad()*f2.getKilos() << " Kg.                 S/." << setprecision(10) << f2.getCantidad()*f2.getPrecio() << endl;
+    pedido << "     " << f3.getCantidad() << " Cuellos.           " << setprecision(3) << f3.getCantidad()*f3.getKilos() << " Kg.                 S/." << setprecision(10) << f3.getCantidad()*f3.getPrecio() << endl;
+    pedido << "     Total: " << f1.getCantidad()+f2.getCantidad()+f3.getCantidad()  << "            " << setprecision(3) << f1.getCantidad()*f1.getKilos()+f2.getCantidad()*f2.getKilos()+f3.getCantidad()*f3.getKilos()  << " Kg.                  S/." << setprecision(10) << f1.getCantidad()*f1.getPrecio()+f2.getCantidad()*f2.getPrecio()+f3.getCantidad()*f3.getPrecio() << endl << endl;
+    pedido << "¡Muchas gracias por su preferencia!" << endl;
 }
 
 //--------- INICIALIZAR ------------------
@@ -248,8 +280,8 @@ void Inicializar()
         cin >> Kilos_por_prenda;
         if(i==0)
         {
-            Precio=30;
-            jersey[0]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+            Precio=15; // <-50% de 30
+            jersey[0]=new Jersey(Cantidad,Kilos_por_prenda,Precio); //Polos jersey
 
             jersey[0]->setCantidad(Cantidad);
             jersey[0]->setKilos(Kilos_por_prenda);
@@ -257,8 +289,8 @@ void Inicializar()
         }
         else if(i==1)
         {
-            Precio=60;
-            pique[0]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+            Precio=30; // <-50% de 60
+            pique[0]=new Pique(Cantidad,Kilos_por_prenda,Precio); //Polos pique
 
             pique[0]->setCantidad(Cantidad);
             pique[0]->setKilos(Kilos_por_prenda);
@@ -266,8 +298,8 @@ void Inicializar()
         }
         else
         {
-            Precio=60;
-            franela[0]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+            Precio=30; // <-50% de 60
+            franela[0]=new Franela(Cantidad,Kilos_por_prenda,Precio); //Polos franela
 
             franela[0]->setCantidad(Cantidad);
             franela[0]->setKilos(Kilos_por_prenda);
@@ -281,8 +313,8 @@ void Inicializar()
         cin >> Kilos_por_prenda;
         if(i==0)
         {
-            Precio=50;
-            jersey[1]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+            Precio=25; // <-50% de 50
+            jersey[1]=new Jersey(Cantidad,Kilos_por_prenda,Precio); //Camisas jersey
 
             jersey[1]->setCantidad(Cantidad);
             jersey[1]->setKilos(Kilos_por_prenda);
@@ -290,8 +322,8 @@ void Inicializar()
         }
         else if(i==1)
         {
-            Precio=75;
-            pique[1]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+            Precio=37.5; // <-50% de 75
+            pique[1]=new Pique(Cantidad,Kilos_por_prenda,Precio); //Camisas pique
 
             pique[1]->setCantidad(Cantidad);
             pique[1]->setKilos(Kilos_por_prenda);
@@ -299,8 +331,8 @@ void Inicializar()
         }
         else
         {
-            Precio=80;
-            franela[1]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+            Precio=40; // <-50% de 80
+            franela[1]=new Franela(Cantidad,Kilos_por_prenda,Precio); //Camisas franela
 
             franela[1]->setCantidad(Cantidad);
             franela[1]->setKilos(Kilos_por_prenda);
@@ -314,8 +346,8 @@ void Inicializar()
         cin >> Kilos_por_prenda;
         if(i==0)
         {
-            Precio=5;
-            jersey[2]=new Jersey(Cantidad,Kilos_por_prenda,Precio);
+            Precio=2.5; // <-50% de 5
+            jersey[2]=new Jersey(Cantidad,Kilos_por_prenda,Precio); //Cuellos jersey
 
             jersey[2]->setCantidad(Cantidad);
             jersey[2]->setKilos(Kilos_por_prenda);
@@ -323,8 +355,8 @@ void Inicializar()
         }
         else if(i==1)
         {
-            Precio=10;
-            pique[2]=new Pique(Cantidad,Kilos_por_prenda,Precio);
+            Precio=5; // <-50% de 10
+            pique[2]=new Pique(Cantidad,Kilos_por_prenda,Precio); //Cuellos pique
 
             pique[2]->setCantidad(Cantidad);
             pique[2]->setKilos(Kilos_por_prenda);
@@ -332,8 +364,8 @@ void Inicializar()
         }
         else
         {
-            Precio=15;
-            franela[2]=new Franela(Cantidad,Kilos_por_prenda,Precio);
+            Precio=7.5; // <-50% de 15
+            franela[2]=new Franela(Cantidad,Kilos_por_prenda,Precio); //Cuellos franela
 
             franela[2]->setCantidad(Cantidad);
             franela[2]->setKilos(Kilos_por_prenda);
@@ -431,14 +463,10 @@ void Inicializar()
     {
         Calculo_Costos(*franela[i],i);
     }
+
+    Salida(*jersey[0],*jersey[1],*jersey[2],*pique[0],*pique[1],*pique[2],*franela[0],*franela[1],*franela[2]);
 }
 
-/*
-void Salida() //[Friend "UNDEFINED"]
-{
-    fstream pedido("Pedido.txt",ios::out);
-}
-*/
 int main()
 {
     cout << "\n<---------------------------------------------->" << endl;
