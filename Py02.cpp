@@ -63,7 +63,7 @@ public:
     }
     void setKilos(double Weight) override
     {
-        Kilos_Jersey=Weight*0.7*100/90; //Cada kilo de hilo de Pique produce 0.7 kilos de tela de Pique || Rendimiento 90%, entonces 0.7*(90%)^-1 para hallar la cantidad original de kilos de tela
+        Kilos_Jersey=Weight*0.7*100/90; //Cada kilo de hilo de Jersey produce 0.7 kilos de tela de Jersey || Rendimiento 90%, entonces 0.7*(90%)^-1 para hallar la cantidad original de kilos de tela
     }
     double getKilos() override
     {
